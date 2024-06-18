@@ -4,7 +4,7 @@ from flask import Flask, request, redirect, render_template, Response, json, jso
 from config import app_config, app_active
 from controller.User import UserController
 from admin.Admin import start_views
-from flask_sqlalchemy import SQLAlchemy, functools
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from flask_wtf import FlaskForm
 from functools import wraps

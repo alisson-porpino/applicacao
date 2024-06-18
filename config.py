@@ -1,6 +1,7 @@
 import os
 import random
 import string
+import sqlite3
 
 
 class Config(object):
@@ -9,6 +10,7 @@ class Config(object):
     TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     APP = None
+    #SQLALCHEMY_DATABASE_URI = 'sqlite+aiosqlite:///./teste.db/'
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:hmetal85@localhost:3306/livro_flask'
     SENGRID_API_KEY = 'API_KEY'
 
@@ -43,4 +45,7 @@ app_config = {
     'producing': ProducingConfig()
 }
 
-app_active = os.getenv('FLASK_ENV')
+app_active = os.getenv('FLASK_ENVIRONMENT', 'development')
+
+if app_active is None:
+    raise Exception('Variável de ambiente FLASK não está definida')
